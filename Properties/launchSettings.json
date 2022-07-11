@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Flock": {
+      "commandName": "Project",
+      "commandLineArgs": "search"
+    }
+  }
+}
