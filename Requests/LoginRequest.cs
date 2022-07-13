@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Flock.Responses;
@@ -24,11 +25,11 @@ namespace Flock.Requests
             _config = Configuration;
         }
 
-        public async Task<bool> GetUserToken()
+        public async Task<bool> Login()
         {
             var user = _auth.AskForCredentials();
             var json = JsonConvert.SerializeObject(user);
-            var data = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
+            var data = new StringContent(json, Encoding.UTF8, "application/json");
 
             var client = new HttpClient();
             client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -40,14 +41,17 @@ namespace Flock.Requests
             if(response.IsSuccessStatusCode)
             {
                 var credentials = JsonConvert.DeserializeObject<UserDto>(responseBody);
-                var success = _auth.PersistCredentials(credentials);
-                if (success)
+                if (credentials != null)
                 {
-                    Console.WriteLine("You are now loged in.");
-                    return true;
+                    var success = _auth.PersistCredentials(credentials);
+                    if (success)
+                    {
+                        Console.WriteLine("You are now logged in.");
+                        return true;
+                    }   
                 }
             }
-            Console.WriteLine("Something went wrong with the login.");
+            Console.WriteLine(response.RequestMessage);
 
             return false;
         }

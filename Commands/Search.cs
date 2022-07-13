@@ -1,4 +1,9 @@
+using System;
 using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
+using Flock.Dtos;
+using Flock.Exceptions;
 using Flock.Responses;
 using Flock.Services;
 using Spectre.Cli;
@@ -9,13 +14,25 @@ namespace Flock.Commands;
 public class Search  : AsyncCommand<Settings>
 {
     private CommandService _commandService;
+    private IAuthentication _auth;
     
-    public Search(CommandService commandService)
+    public Search(CommandService commandService, IAuthentication authentication)
     {
         _commandService = commandService;
+        _auth = authentication;
     }
     public override async Task<int> ExecuteAsync(CommandContext context, Settings settings)
     {
+        try
+        {
+           _auth.ReadUserCredentials();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("You are not logged in yet. Run flock --help.");
+            return 0;
+        }
+        
         Console.Clear();
         var results = new CommandResponse();
         var query = settings.Query;
@@ -31,9 +48,10 @@ public class Search  : AsyncCommand<Settings>
             {
                 results = await _commandService.Search(query);
                 Thread.Sleep(800);
+                return 0;
             });
         
-        if (results.Data.Count > 0)
+        if (results != null && results.Data.Count > 0)
         {
             bool run = true;
             while (run)

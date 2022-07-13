@@ -12,17 +12,20 @@ namespace Flock.Services;
 public class CommandService : ISearchService
 {
     private IConfiguration _config;
+    private IAuthentication _auth;
 
-    public CommandService(IConfiguration configuration)
+    public CommandService(IConfiguration configuration, IAuthentication authentication)
     {
         _config = configuration;
+        _auth = authentication;
     }
     
     public async Task<CommandResponse> Search(string query)
     {
+        var user = _auth.ReadUserCredentials();
         var client = new HttpClient();
         client.DefaultRequestHeaders.Add("Accept", "application/json");
-        client.DefaultRequestHeaders.Add("Authorization", "Bearer 1|cQXeCYq65PAgBrFs0002jG0LkitjRAnf1uG97ic1");
+        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {user.Token}");
         client.BaseAddress = new Uri(_config.GetValue<string>("BaseUrl"));
         
         var response = await client.GetAsync($"/api/console/commands?search={query}");

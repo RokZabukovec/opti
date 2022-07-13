@@ -3,6 +3,7 @@ using Flock.Models;
 using Newtonsoft.Json;
 using Spectre.Console;
 using System.Text;
+using Flock.Exceptions;
 
 namespace Flock.Services
 {
@@ -81,6 +82,10 @@ namespace Flock.Services
             var dir = CreateCredentialsDirectory();
             var filePath = Path.Combine(dir.ToString(), "Flock.json");
 
+            if (File.Exists(filePath) == false)
+            {
+                throw new UnauthorizedException();
+            }
             // deserialize JSON directly from a file
             using (StreamReader file = File.OpenText(filePath))
             {

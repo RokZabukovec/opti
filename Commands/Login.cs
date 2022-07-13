@@ -18,7 +18,7 @@ namespace Flock.Commands
 
         public async override Task<int> ExecuteAsync(CommandContext context, Settings settings)
         {
-            var login = await _login.GetUserToken();
+            var login = await _login.Login();
             var query = settings.Query;
             if (string.IsNullOrEmpty(query))
             {
