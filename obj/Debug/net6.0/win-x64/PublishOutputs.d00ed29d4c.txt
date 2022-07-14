@@ -1,3 +1,0 @@
-/home/rokzabukovec/Projects/Flock/bin/Debug/net6.0/win-x64/publish/Flock.pdb
-/home/rokzabukovec/Projects/Flock/bin/Debug/net6.0/win-x64/publish/appsettings.json
-/home/rokzabukovec/Projects/Flock/bin/Debug/net6.0/win-x64/publish/Flock.exe
