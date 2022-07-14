@@ -47,8 +47,8 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          tag=$(git fetch --tags && git tag && git describe --tags --abbrev=0)
-          release_name="App-$tag-${{ matrix.target }}"
+          tag=test
+          release_name="App-${{ matrix.target }}"
           
           # Build everything
           dotnet publish Flock.csproj --framework net6.0 --runtime "${{ matrix.target }}" -c Release -o "$release_name"
