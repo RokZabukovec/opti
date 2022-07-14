@@ -47,7 +47,7 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          tag=$(git describe --tags --abbrev=0)
+          tag=$(git fetch --tags && git tag && git describe --tags --abbrev=0)
           release_name="App-$tag-${{ matrix.target }}"
           
           # Build everything
