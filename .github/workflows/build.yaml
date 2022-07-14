@@ -1,10 +1,8 @@
 name: Build, test, and deploy
 
 on:
-  push:
-    branches:
-      - 'main'
-      - 'RELEASE/v**'
+  release:
+    types: [published]
 
 
 jobs:
@@ -65,12 +63,6 @@ jobs:
           # Delete output directory
           rm -r "$release_name"
 
-          - name: Publish
-            uses: softprops/action-gh-release@v1
-            with:
-              files: "App*"
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish
         uses: softprops/action-gh-release@v1
         with:
