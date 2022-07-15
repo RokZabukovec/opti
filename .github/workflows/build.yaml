@@ -51,8 +51,7 @@ jobs:
           release_name="App-${{ matrix.target }}"
           
           # Build everything
-          dotnet publish Flock.csproj --framework net6.0 --runtime "${{ matrix.target }}" -c Release -o "$release_name"
-          
+          dotnet publish Flock.csproj -p:PublishSingleFile=true -r "${{ matrix.target }}" -c Release --self-contained true
           # Pack files
           if [ "${{ matrix.target }}" == "win-x64" ]; then
           # Pack to zip for Windows
