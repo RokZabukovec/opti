@@ -34,7 +34,7 @@ namespace opti.Services
 
         public DirectoryInfo CreateCredentialsDirectory()
         {
-            var dirName = ".flock";
+            var dirName = ".opti";
             var userLocation = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
             var location = Path.Combine(userLocation, dirName);
             if (!Directory.Exists(location))

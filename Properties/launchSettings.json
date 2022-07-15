@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Flock": {
+    "opti": {
       "commandName": "Project",
       "commandLineArgs": "search"
     }
