@@ -52,7 +52,7 @@ jobs:
           release_name="$(git config --local remote.origin.url|sed -n 's#.*/\([^.]*\)\.git#\1#p')-$tag-${{ matrix.target }}"
 
           # Build everything
-          dotnet publish Flock.csproj -p:PublishSingleFile=true --framework net6.0 --runtime "${{ matrix.target }}" -c Release -o "$release_name" --self-contained true
+          dotnet publish opti.csproj -p:PublishSingleFile=true --framework net6.0 --runtime "${{ matrix.target }}" -c Release -o "$release_name" --self-contained true
           
           # Pack files
           if [ "${{ matrix.target }}" == "win-x64" ]; then

@@ -1,6 +1,6 @@
 ﻿using Spectre.Cli;
 
-namespace Flock.Cli
+namespace opti.Cli
 {
     internal class TypeResolver : ITypeResolver
     {

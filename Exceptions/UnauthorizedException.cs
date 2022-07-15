@@ -1,4 +1,4 @@
-namespace Flock.Exceptions;
+namespace opti.Exceptions;
 
 public class UnauthorizedException : Exception
 {

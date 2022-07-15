@@ -1,13 +1,13 @@
-﻿using Flock.Dtos;
-using Flock.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using opti.Dtos;
+using opti.Models;
 
-namespace Flock.Services
+namespace opti.Services
 {
     public interface IAuthentication
     {

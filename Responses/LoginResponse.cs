@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flock.Responses
+namespace opti.Responses
 {
     public class LoginResponse
     {

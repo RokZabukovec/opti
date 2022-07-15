@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flock.Cli
+namespace opti.Cli
 {
     internal class TypeRegistrar : ITypeRegistrar
     {

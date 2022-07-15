@@ -1,6 +1,4 @@
-﻿using Flock.Models;
-using Flock.Services;
-using Flock.Dtos;
+﻿using opti.Models;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;
@@ -9,9 +7,11 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Flock.Responses;
+using opti.Responses;
+using opti.Dtos;
+using opti.Services;
 
-namespace Flock.Requests
+namespace opti.Requests
 {
     internal class LoginRequest
     {

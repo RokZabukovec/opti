@@ -1,13 +1,13 @@
 using System.Diagnostics;
 using System.Text.RegularExpressions;
-using Flock.Models;
-using Flock.Requests;
-using Flock.Responses;
+using opti.Requests;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using opti.Models;
+using opti.Responses;
 using Spectre.Console;
 
-namespace Flock.Services;
+namespace opti.Services;
 
 public class CommandService : ISearchService
 {
@@ -37,7 +37,7 @@ public class CommandService : ISearchService
     public string ShowCommandSelectList(IEnumerable<Command> commands)
     {
         var commandNames = commands.Select(command => command.Name).ToList();
-        Console.Title = $"Flock found {commandNames.Count} results.";
+        Console.Title = $"opti found {commandNames.Count} results.";
         var command = AnsiConsole.Prompt(
             new SelectionPrompt<string>()
                 .Title("[green]These are the results:[/]")

@@ -1,8 +1,8 @@
-﻿using Flock.Requests;
-using Flock.Services;
+﻿using opti.Requests;
+using opti.Services;
 using Spectre.Cli;
 
-namespace Flock.Commands
+namespace opti.Commands
 {
     internal class Login : AsyncCommand<Settings>
     {

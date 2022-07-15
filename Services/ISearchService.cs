@@ -1,7 +1,7 @@
-using Flock.Models;
-using Flock.Responses;
+using opti.Models;
+using opti.Responses;
 
-namespace Flock.Services;
+namespace opti.Services;
 
 public interface ISearchService
 {

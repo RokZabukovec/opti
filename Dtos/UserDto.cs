@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flock.Dtos
+namespace opti.Dtos
 {
     public class UserDto
     {

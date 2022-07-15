@@ -1,7 +1,6 @@
-using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 
-namespace Flock.Models;
+namespace opti.Models;
 
 public class Command
 {

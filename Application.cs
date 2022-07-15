@@ -1,11 +1,11 @@
-﻿using Flock.Cli;
-using Flock.Commands;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using opti.Cli;
+using opti.Commands;
 using Spectre.Cli;
 using Spectre.Console;
 
-namespace Flock
+namespace opti
 {
     public class Application
     {
@@ -13,7 +13,7 @@ namespace Flock
         {
             if (args.Length == 0)
             {
-                AnsiConsole.Write(new FigletText("Flock")
+                AnsiConsole.Write(new FigletText("opti")
                     .LeftAligned()
                     .Color(Color.Blue));
             }

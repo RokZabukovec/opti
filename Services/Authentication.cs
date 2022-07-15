@@ -1,11 +1,11 @@
-﻿using Flock.Dtos;
-using Flock.Models;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Spectre.Console;
 using System.Text;
-using Flock.Exceptions;
+using opti.Dtos;
+using opti.Exceptions;
+using opti.Models;
 
-namespace Flock.Services
+namespace opti.Services
 {
     public class Authentication : IAuthentication
     {
@@ -59,7 +59,7 @@ namespace Flock.Services
         public bool PersistCredentials(UserDto user)
         {
             var dir = CreateCredentialsDirectory();
-            var filePath = Path.Combine(dir.ToString(), "Flock.json");
+            var filePath = Path.Combine(dir.ToString(), "opti.json");
             using (FileStream fs = File.Create(filePath))
             {
                 try
@@ -80,7 +80,7 @@ namespace Flock.Services
         public UserDto ReadUserCredentials()
         {
             var dir = CreateCredentialsDirectory();
-            var filePath = Path.Combine(dir.ToString(), "Flock.json");
+            var filePath = Path.Combine(dir.ToString(), "opti.json");
 
             if (File.Exists(filePath) == false)
             {

@@ -1,6 +1,6 @@
-using Flock.Models;
+using opti.Models;
 
-namespace Flock.Responses;
+namespace opti.Responses;
 
 public class CommandResponse
 {

@@ -2,14 +2,14 @@ using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using Flock.Dtos;
-using Flock.Exceptions;
-using Flock.Responses;
-using Flock.Services;
+using opti.Dtos;
+using opti.Exceptions;
+using opti.Responses;
+using opti.Services;
 using Spectre.Cli;
 using Spectre.Console;
 
-namespace Flock.Commands;
+namespace opti.Commands;
 
 public class Search  : AsyncCommand<Settings>
 {
@@ -29,7 +29,7 @@ public class Search  : AsyncCommand<Settings>
         }
         catch (Exception e)
         {
-            Console.WriteLine("You are not logged in yet. Run flock --help.");
+            Console.WriteLine("You are not logged in yet. Run opti --help.");
             return 0;
         }
         

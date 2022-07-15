@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Flock.Commands
+namespace opti.Commands
 {
     public class Settings : CommandSettings
     {

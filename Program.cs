@@ -1,11 +1,11 @@
-﻿using Flock.Requests;
-using Flock.Services;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using opti.Requests;
+using opti.Services;
 using Serilog;
 
 
-namespace Flock
+namespace opti
 {
     public class Program
     {
