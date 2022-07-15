@@ -47,17 +47,19 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          tag=test
-          release_name="App-${{ matrix.target }}"
-          
+          # Define some variables for things we need
+          tag=$(git describe --tags --abbrev=0)
+          release_name="$(git config --local remote.origin.url|sed -n 's#.*/\([^.]*\)\.git#\1#p')-$tag-${{ matrix.target }}"
+
           # Build everything
-          dotnet publish Flock.csproj -p:PublishSingleFile=true -r "${{ matrix.target }}" -c Release --self-contained true
+          dotnet publish Flock.csproj -p:PublishSingleFile=true --framework net6.0 --runtime "${{ matrix.target }}" -c Release -o "$release_name" --self-contained true
+          
           # Pack files
           if [ "${{ matrix.target }}" == "win-x64" ]; then
           # Pack to zip for Windows
           7z a -tzip "${release_name}.zip" "./${release_name}/*"
           else
-          tar -czvf "${release_name}.tar.gz" "$release_name"
+          tar czvf "${release_name}.tar.gz" "$release_name"
           fi
           
           # Delete output directory
